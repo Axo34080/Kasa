@@ -1,24 +1,14 @@
-import './Banner';
-import { useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import './_Banner.scss';
+import '../../style/utils/_mixins.scss';
+import '../../style/utils/_variables.scss';
 
-export default function Banner () {
 
-	const [aboutPage, setAboutPage] = useState(false);
-	const location = useLocation();
-
-	useEffect(() => {
-		if (location.pathname === '/about') {
-			setAboutPage(true);
-		};
-	},[])
-
+export default function Banner() {
 	return (
-		<section className = {aboutPage ? 'banner_about' : 'banner'}>
-			{!aboutPage && <h2>Chez vous, partout et ailleurs</h2>}
-		</section>
-	)
-
-
-
+		<div className="banner-container">
+			<div className="banner-text-container">
+				<div className="banner-text">Chez vous, partout et ailleurs</div>
+			</div>
+		</div>
+	);
 }

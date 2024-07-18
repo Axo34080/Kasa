@@ -1,6 +1,8 @@
+import '../../style/utils/_mixins.scss';
+import '../../style/utils/_variables.scss';
+import './_Card.scss';
 
-
-function Card({ cover, title }) { //les cards de locations récupèrent les couvertures et titres en props depuis Home
+function Card({ cover, title }) { 
 	return (
 		<article className="card-logement">
 			<img src={cover} alt="location" />

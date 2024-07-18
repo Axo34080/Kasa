@@ -1,31 +1,39 @@
-import './Collapse'
-import arrow from '../../Assets/vectorHaut.svg';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from "react";
+import Chevron from "../../Assets/down-chevron.png";
 
-export default function Collapse({title, content}) {
+export default function Collapse(props) {
+	const [toggle, setToggle] = useState(false);
+	const [heightEl, setHeightEl] = useState(); 
 
-    const [toggle, setToggle] = useState(false);
+	const toggleState = () => {
+		
+		setToggle(!toggle);
+	};
 
-    return (
-        <>
-            <div className="collapse" >
-                <h3 className='collapse_title' onClick={() => setToggle(!toggle)} >
-                    {title}
-                    <img 
-                        className={toggle ? 'arrow arrow_up' : 'arrow arrow_down'} 
-                        src={arrow} 
-                        alt="show content" 
-                    />
-                </h3>
-                <div className={toggle ? 'collapse_content' : 'collapse_content_hidden'}>
-                    {Array.isArray(content) ? content.map((item, index) => {
-                        return (
-                            <p key={index}>{item}</p>
-                        )
-                    }) : content
-                    }
-                </div> 
-            </div>
-        </>
-    )
+	const refHeight = useRef(); 
+
+	useEffect(() => {
+		setHeightEl(`${refHeight.current.scrollHeight}px`); 
+	}, []);
+
+	return (
+		
+		<div className={`collapse ${props.aboutStyle}`}>
+			<div onClick={toggleState} className="collapse__visible">
+				<h2>{props.aboutTitle}</h2>
+				<img
+					className={toggle ? "chevron rotated" : "chevron"}
+					src={Chevron}
+					alt="chevron"
+				/>
+			</div>
+			<div
+				ref={refHeight}
+				className={toggle ? "collapse__toggle animated" : "collapse__toggle"}
+				style={{ height: toggle ? `${heightEl}` : "0px" }}
+			>
+				<p aria-hidden={toggle ? "true" : "false"}>{props.aboutText}</p>
+			</div>
+		</div>
+	);
 }

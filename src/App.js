@@ -7,11 +7,15 @@ import Error from "./Pages/Error/Error";
 
 const router = createBrowserRouter([
 	{
+        path: "/",
+        element: <Home />,
+    },
+	{
 		path: "/Kasa",
 		element: <Home />
 	},
 	{
-		path: "/accomodation/:id",
+		path: "/FicheLogement/:id",
 		element: <FicheLogement />
 	},
 	{

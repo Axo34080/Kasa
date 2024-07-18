@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import './_Nav.scss';
+import '../../style/utils/_mixins.scss';
+import '../../style/utils/_variables.scss';
 
 export default function Nav() {
 	return (

@@ -1,3 +1,6 @@
+@import '../../style/utils/mixins';
+@import '../../style/utils/variables';
+
 .nav-header {
 	@include flex-end;
 	text-transform: uppercase;
@@ -9,7 +12,7 @@
 	&_link-home,
 	&_link-about {
 		@include font-right(12px);
-		color: $primary-color;
+		color: $color-primary;
 		text-decoration: none;
 		padding-left: 0.8rem;
 

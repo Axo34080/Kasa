@@ -1,4 +1,6 @@
-import './Apropos';
+import './_Apropos.scss';
+import '../../style/utils/_mixins.scss';
+import '../../style/utils/_variables.scss';
 import Header from "../../Components/Header/Header";
 import Banner from '../../Components/Banner/Banner';
 import Collapse from '../../Components/Collapse/Collapse';

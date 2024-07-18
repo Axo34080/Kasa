@@ -1,3 +1,16 @@
-@import 'base/_reset';
+@import 'base/base';
 @import 'utils/_variables';
 @import 'utils/mixins';
+
+@import "../Components/AboutBanner/AboutBanner";
+@import "../Components/Banner/Banner";
+@import "../Components/Card/Card";
+@import "../Components/Carousel/Carousel";
+@import "../Components/Collapse/Collapse";
+@import "../Components/Error/Error";
+@import "../Components/Footer/Footer";
+@import "../Components/Header/Header";
+@import "../Components/Host/Host";
+@import "../Components/Nav/Nav";
+@import "../Components/Rating/Rating";
+@import "../Components/Tag/Tag";

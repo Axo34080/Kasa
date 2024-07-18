@@ -1,3 +1,6 @@
+@import '../../style/utils/mixins';
+@import '../../style/utils/variables';
+
 .card-logement {
     position: relative;
     display: flex;
@@ -7,15 +10,6 @@
     min-width: 335px;
     transition: transform 1s;
 
-    @media screen and (min-width: $breakpoint-desktop) {
-        width: 340px;
-        height: 340px;
-
-        &:hover,
-        &:focus {
-            @include boxShadow;
-        }
-    }
 
     & img {
         display: flex;

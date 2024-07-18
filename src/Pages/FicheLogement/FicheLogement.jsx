@@ -1,76 +1,75 @@
-import './FicheLogement';
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom";
-import datas from '../../Datas/logements.json';
-import Header from "../../Components/Header/Header";
-import Slider from "../../Components/Carousel/Carousel"
-import Footer from "../../Components/Footer/Footer";
-import Collapse from '../../Components/Collapse/Collapse';
-import NotFound from '../Error/Error';
-import Tag from '../../Components/Tag/Tag';
-import Rating from '../../Components/Rating/Rating';
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import Carrousel from "../../Components/Carousel/Carousel";
+import Collapse from "../../Components/Collapse/Collapse";
+import Host from "../../Components/Host/Host";
+import Rate from "../../Components/Rating/Rating";
+import Tag from "../../Components/Tag/Tag";
+import axios from "axios";
 
-export default function Accomodation() {
+export default function FicheLogement() {
+	const params = useParams();
+	const navigate = useNavigate();
 
-	const [imageSlider, setImageSlider] = useState([]);
-
-	const { id } = useParams();
-	const dataCurrentAccomodation = datas.find(data => data.id === id);
-
+	const [pickedAppart, setPickedAppart] = useState();
 	useEffect(() => {
-		if (dataCurrentAccomodation) {
-			setImageSlider(dataCurrentAccomodation.pictures);
-		}
-	}, [id, dataCurrentAccomodation]);
-
-	if (!dataCurrentAccomodation) {
-		return <NotFound />;
-	}
-
-	const name = dataCurrentAccomodation.host.name.split(' ');
-	const rating = dataCurrentAccomodation.rating;
-	const description = dataCurrentAccomodation.description;
-	const equipments = dataCurrentAccomodation.equipments;
-
+		const getData = async () => {
+			const res = await axios.get("/logements.json"); //j'ai utilisé axio pour la futur mise en place de l'API
+			const picked = res.data.find(({ id }) => id === params.id);
+			res.data.map(() => setPickedAppart(picked));
+			if (picked === undefined) {
+				navigate("/404", { state: { message: "Can't get data" } }); //renvoi vers la page 404 en cas d'URL de logement invalide
+			}
+		};
+		getData();
+		// eslint-disable-next-line
+	}, []); // array vide du useEffect pour ne lancer qu'une seule fois
+	const slidePics = pickedAppart && pickedAppart.pictures;
+	const tags = pickedAppart && pickedAppart.tags;
+	const equipments = pickedAppart && pickedAppart.equipments;
+	const equip =
+		pickedAppart &&
+		equipments.map((item, index) => (
+			<li key={index} className="equipList">
+				{item}
+			</li>
+		));
 	return (
-		<div className='accomodation_wrapper'>
-			<Header />
-			<Slider imageSlider={imageSlider} />
-			<main className="accomodation">
-				<div className="accomodation_content">
-					<div className="accomodation_content_infos">
-						<h1>{dataCurrentAccomodation.title}</h1>
-						<p>{dataCurrentAccomodation.location}</p>
-						<div>
-							{dataCurrentAccomodation.tags.map((tag, index) => 
-								<Tag key={index} tag={tag}/>
-							)}
+		pickedAppart && (
+			<div key={params.id} className="fiche-container">
+				<Carrousel slides={slidePics} />
+				<section className="hostInfo-container">
+					<div className="title-tags-container">
+						<div className="title-container redFont">
+							<h1>{pickedAppart.title}</h1>
+							<h3>{pickedAppart.location}</h3>
+						</div>
+						<div className="tags-container">
+							{tags.map((tag) => (
+								<Tag key={tag} tag={tag} />
+							))}
 						</div>
 					</div>
-					<div className="accomodation_content_host">
-						<div>
-							<div className='accomodation_content_host_name'>
-								<span>{name[0]}</span>
-								<span>{name[1]}</span>
-							</div>
-							<img src={dataCurrentAccomodation.host.picture} alt="host of this accomodation" />
+					<div className="rate-host-container">
+						<div className="host-container redFont">
+							<Host
+								hostName={pickedAppart.host.name}
+								hostPic={pickedAppart.host.picture}
+							/>
 						</div>
-
-						<div className="accomodation_content_host_stars">
-							<Rating rating={rating} />
+						<div className="rate-container">
+							<Rate score={pickedAppart.rating} />
 						</div>
 					</div>
+				</section>
+				<div className="collapse-fiche-container">
+					<Collapse
+						aboutTitle="Description"
+						aboutText={pickedAppart.description}
+					/>
+					<Collapse aboutTitle="Équipements" aboutText={equip} />
 				</div>
-				<div className="accomodation_collapse">
-					<div className="accomodation_collapse_item">
-						<Collapse title={'Description'} content={description}/>
-					</div>
-					<div className="accomodation_collapse_item">
-						<Collapse title={'Équipements'} content={equipments}/>
-					</div>
-				</div>
-			</main>
-			<Footer />
-		</div>
-	)
+			</div>
+		)
+	);
 }
