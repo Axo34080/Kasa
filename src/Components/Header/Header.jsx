@@ -1,7 +1,5 @@
 import React from 'react'
 import './_Header.scss';
-import '../../style/utils/_mixins.scss';
-import '../../style/utils/_variables.scss';
 import logo from '../../Assets/LOGO.svg';
 import Nav from '../Nav/Nav';
 

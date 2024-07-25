@@ -1,6 +1,6 @@
-@import '../../style/main.scss';
-@import '../../style/utils/mixins';
-@import '../../style/utils/variables';
+@import '../../style/utils/_mixins.scss';
+@import '../../style/utils/_variables.scss';
+
 
 .banner-container {
 	height: 111px;
@@ -23,7 +23,7 @@
 	font-size: 24px;
 	font-weight: 500;
 	line-height: 100%;
-	color: $tertiary-color;
+	color: $color-tertiary;
 	@include small-radius;
 	width: 217px;
 	height: 48px;

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import Header from "../../Components/Header/Header";
 import Banner from "../../Components/Banner/Banner";
 import Card from "../../Components/Card/Card";
+import Footer from "../../Components/Footer/Footer";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -13,6 +15,7 @@ export default function Home() {
 
 	return (
 		<>
+			<Header />
 			<Banner />
 			<div className="cards-container">
 				{data.map((appart, id) => (
@@ -23,6 +26,7 @@ export default function Home() {
 					</div>
 				))}
 			</div>
+			<Footer />
 		</>
 	);
 }

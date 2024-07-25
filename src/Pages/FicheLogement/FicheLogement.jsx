@@ -14,16 +14,22 @@ export default function FicheLogement() {
 	const [pickedAppart, setPickedAppart] = useState();
 	useEffect(() => {
 		const getData = async () => {
-			const res = await axios.get("/logements.json"); //j'ai utilisé axio pour la futur mise en place de l'API
-			const picked = res.data.find(({ id }) => id === params.id);
-			res.data.map(() => setPickedAppart(picked));
-			if (picked === undefined) {
-				navigate("/404", { state: { message: "Can't get data" } }); //renvoi vers la page 404 en cas d'URL de logement invalide
+			try {
+				const res = await axios.get("/logements.json");
+				const picked = res.data.find(({ id }) => id === params.id);
+				if (picked) {
+					setPickedAppart(picked);
+				} else {
+					navigate("/404", { state: { message: "Can't get data" } });
+				}
+			} catch (error) {
+				console.error("There was an error fetching the data", error);
+				navigate("/404", { state: { message: "Can't get data" } });
 			}
 		};
 		getData();
 		// eslint-disable-next-line
-	}, []); // array vide du useEffect pour ne lancer qu'une seule fois
+	}, [navigate, params.id]);
 	const slidePics = pickedAppart && pickedAppart.pictures;
 	const tags = pickedAppart && pickedAppart.tags;
 	const equipments = pickedAppart && pickedAppart.equipments;

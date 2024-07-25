@@ -1,7 +1,6 @@
-@import '../../style/main.scss';
-@import '../../style/utils/mixins';
-@import '../../style/utils/variables';
 
+@import '../../style/utils/_mixins.scss';
+@import '../../style/utils/_variables.scss';
 
 .headerWrap {
 	display: flex;
