@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "../../style/base/_base.scss";
 import Header from "../../Components/Header/Header";
 import Banner from "../../Components/Banner/Banner";
 import Card from "../../Components/Card/Card";
@@ -20,7 +21,7 @@ export default function Home() {
 			<div className="cards-container">
 				{data.map((appart, id) => (
 					<div className="card_logement" key={id}>
-						<Link className="link_card_logement" to={`/logement/${appart.id}`}>
+						<Link className="link_card_logement" to={`/FicheLogement/${appart.id}`}>
 							<Card cover={appart.cover} title={appart.title} />
 						</Link>
 					</div>

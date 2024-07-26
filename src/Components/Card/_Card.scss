@@ -1,13 +1,14 @@
 @import '../../style/utils/mixins';
 @import '../../style/utils/variables';
 
-.card-logement {
+.card_logement {
     position: relative;
     display: flex;
-    width: 335px;
-    height: 255px;
+    width: 30%;
+    gap: 5px;
+    height: auto;
     @include small-radius;
-    min-width: 335px;
+    min-height: 316px;
     transition: transform 1s;
 
     & img {
@@ -15,6 +16,7 @@
         width: 100%;
         @include small-radius;
         object-fit: cover;
+        height: 316px;
     }
 
     &__layer {
@@ -46,21 +48,21 @@
     width: 100%;
     gap: 20px;
     @include small-radius;
-    margin: 22px 0;
     flex-wrap: wrap;
+    margin: 22px auto;
+    padding: 0 20px;
 
     @media screen and (min-width: $breakpoint-desktop) {
         gap: 50px;
         padding: 5% 1%;
         background-color: #f7f7f7;
         @include big-radius;
-        margin: 43px 0;
+        margin: 43px auto;
     }
 
     & > .card-logement {
-        flex: 0 1 30%; // Fixe la largeur à 30% pour trois cartes par rangée
+        width: 90%;
         box-sizing: border-box;
-        margin: 10px; 
     }
 }
 
