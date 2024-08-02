@@ -5,8 +5,10 @@
 .headerWrap {
 	display: flex;
 	justify-content: space-between;
+	width: 90%;
 	align-items: center;
 	margin: 5%;
+    flex-direction: column;
 
 	@media screen and (min-width: $breakpoint-desktop) {
 		margin: 40px 100px 49px 100px;
@@ -26,4 +28,11 @@
 			width: 100%;
 		}
 	}
+
+.div {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+
 }

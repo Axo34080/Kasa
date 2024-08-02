@@ -1,12 +1,12 @@
 @import '../../style/utils/_mixins.scss';
 @import '../../style/utils/_variables.scss';
 
-
 .banner-container {
 	margin: 0 40px;
 	height: 111px;
 	@include small-radius;
 	@include flex-banner;
+	
 
 	@media screen and (min-width: $breakpoint-desktop) {
 		height: 223px;

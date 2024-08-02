@@ -1,9 +1,13 @@
+@import '../../style/utils/variables';
+@import '../../style/utils/mixins';
+
 .aboutBackground {
     @include flex-center;
     @include bkgrd($about-background-mobile);
-    width: 100%;
+    width: 90%;
     height: 223px;
     margin-top: 20px;
+    margin-left: 100px;
     @include small-radius;
 
     @media screen and (min-width: $breakpoint-desktop) {

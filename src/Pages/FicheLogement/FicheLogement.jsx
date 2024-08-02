@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import {useParams, useNavigate } from "react-router-dom";
+import "../../style/base/_base.scss";
 import Header from "../../Components/Header/Header";
 import Carrousel from "../../Components/Carousel/Carousel";
 import Collapse from "../../Components/Collapse/Collapse";
