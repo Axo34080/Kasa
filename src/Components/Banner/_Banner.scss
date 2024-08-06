@@ -4,6 +4,8 @@
 .banner-container {
 	margin: 0 40px;
 	height: 111px;
+	border: 2px solid red;
+	width: 90%;
 	@include small-radius;
 	@include flex-banner;
 	
@@ -15,7 +17,7 @@
 	}
 }
 
-.banner-text {
+.banner-text-container {
 	position: absolute;
 	top: 28.04%;
 	left: 5.6%;
