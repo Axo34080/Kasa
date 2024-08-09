@@ -1,6 +1,5 @@
 import './_Banner.scss';
-import '../../style/utils/_mixins.scss';
-import '../../style/utils/_variables.scss';
+
 
 
 export default function Banner() {

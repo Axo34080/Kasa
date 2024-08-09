@@ -1,6 +1,4 @@
-import '../../style/utils/_mixins.scss';
-import '../../style/utils/_variables.scss';
-import './_Card.scss';
+//import './_Card.scss';
 
 function Card({ cover, title }) { 
 	return (

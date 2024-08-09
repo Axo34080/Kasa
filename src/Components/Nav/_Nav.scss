@@ -22,11 +22,10 @@
 		}
 
 		&:hover,
-		&:focus {
-			text-decoration-line: underline;
-		}
+		&:focus
 		&:active {
 			text-decoration-line: underline;
 		}
+		
 	}
 }

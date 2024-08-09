@@ -15,7 +15,7 @@ export default function Home() {
 	}, []);
 
 	return (
-		<>
+		<div className="home-page">
 			<Header />
 			<Banner />
 			<div className="cards-container">
@@ -28,6 +28,6 @@ export default function Home() {
 				))}
 			</div>
 			<Footer />
-		</>
+		</div>
 	);
 }
