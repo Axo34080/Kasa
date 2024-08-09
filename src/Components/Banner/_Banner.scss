@@ -7,7 +7,6 @@
 	width: 90%;
 	@include small-radius;
 	@include flex-banner;
-	margin-bottom: 200px;
 	
 
 	@media screen and (min-width: $breakpoint-desktop) {
