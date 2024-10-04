@@ -36,9 +36,8 @@ Compétences acquises
 Développer les routes d'une application web avec React Router
 Initialiser une application web avec un framework
 Créer des composants avec React
-Informations complémentaires
-Visiter le site web : https://sihambordjah.github.io/kasa/
-Soutenance validé le : ?/?/?
+
+
 Installation
 Premiers pas avec l'application Create React
 Ce projet a été lancé avec Create React App
